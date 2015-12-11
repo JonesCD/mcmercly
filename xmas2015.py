@@ -96,4 +96,10 @@ def send_email(user, pwd, recipient, subject, body):
     except:
         print "failed to send mail"
 
-send_email('jones.christopherd@gmail.com', '#######', 'jones.christopherd@gmail.com', 'perfect test', 'hello and more')
+addys = ['jones', 'cdj', 'jonesc']
+addy_dict = {'jones': 'jones.christopherd@gmail.com', 'cdj': 'cdj314@gmail.com', 'jonesc': 'jonesc@colorado.edu'}
+other_dict = {'jones': 'bah', 'jonesc': 'nom', 'cdj':'sou'}
+
+
+for i in addys:
+	send_email('jones.christopherd@gmail.com', '###########', addy_dict[i], 'perfect test', 'hello and more %s' % other_dict[i])
