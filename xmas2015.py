@@ -20,17 +20,25 @@ def matching(person):
 			diff = abs(hat_pull - value)	
 
 			match = key
-	picks_dict[key] = match
+	picks_dict[person] = match
 	return picks_dict
 
 def checking(person):
 	global picks_dict
+	peeps_index = peeps.index(person)
 	if picks_dict[person] == peeps_dict[person]:
 		matching(person)
+	elif peeps_index % 2 == 0:
+		if peeps.index(picks_dict[person]) == peeps_index + 1:
+			matching(person)
+	elif peeps_index % 2 != 0:
+		if peeps.index(picks_dict[person]) == peeps_index - 1:
+			matching(person)
+	else:
+		pass
 
 for i in peeps:
 	matching(i)
-	print picks_dict
-	# checking(i)
+	checking(i)
 
-print picks_dict
+print picks_dict.items()
