@@ -81,40 +81,40 @@ def go():
 
 go()
 santa = picks_dict
-print 'Santa list: %r' % santa
+# print 'Santa list: %r' % santa
 picks_dict = {}
 go()
 elf = picks_dict
-print 'Elf list: %r' % elf
+# print 'Elf list: %r' % elf
 
 # email the results by person
-# def send_email(user, pwd, recipient, subject, body):
-#     import smtplib
+def send_email(user, pwd, recipient, subject, body):
+    import smtplib
 
-#     gmail_user = user
-#     gmail_pwd = pwd
-#     FROM = user
-#     TO = recipient if type(recipient) is list else [recipient]
-#     SUBJECT = subject
-#     TEXT = body
+    gmail_user = user
+    gmail_pwd = pwd
+    FROM = user
+    TO = recipient if type(recipient) is list else [recipient]
+    SUBJECT = subject
+    TEXT = body
 
-#     # Prepare actual message
-#     message = """\From: %s\nTo: %s\nSubject: %s\n\n%s
-#     """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
-#     try:
-#         server = smtplib.SMTP("smtp.gmail.com", 587)
-#         server.ehlo()
-#         server.starttls()
-#         server.login(gmail_user, gmail_pwd)
-#         server.sendmail(FROM, TO, message)
-#         server.close()
-#         print 'successfully sent the mail'
-#     except:
-#         print "failed to send mail"
+    # Prepare actual message
+    message = """\From: %s\nTo: %s\nSubject: %s\n\n%s
+    """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
+    try:
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.ehlo()
+        server.starttls()
+        server.login(gmail_user, gmail_pwd)
+        server.sendmail(FROM, TO, message)
+        server.close()
+        print 'successfully sent the mail'
+    except:
+        print "failed to send mail"
 
-# peeps_addy_dict = {'jones': 'jones.christopherd@gmail.com', 'cdj': 'cdj314@gmail.com', 'jonesc': 'jonesc@colorado.edu'}
+peeps_addy_dict = {'chris': 'jones.christopherd@gmail.com', 'olessa': '@gmail.com', 'alex': '@gmail.com', 'charlie': '@gmail.com', 'brandon': '@gmail.com', 'erica': '@hotmail.com', 'sarah': '@gmail.com', 'brian':'@gmail.com'}
 
+msg = "Hello, member of the Fun Crowd (%s)! We are having a group gift exchange. A Secret Santa. You've been assigned two people to get a gift for. They may or may not be the same person, but you can be assured that they won't be: 1) your spouse, or 2) the same person that's getting something for you. The possibility that they may be the same person is a bug. I can't fix it. I don't have the skill. Don't be a jerk about it. If you get the same person, that does not mean you can just combine the two gifts. Anyway, you're 'Santa' to someone. That means you shall not spend more than $12.50 in buying/crafting/baking/shipping them a gift (your time has no value here - accept that). You're also an 'Elf' to someone. That means you shall not spend more than $2.50 on that person. There is a BIG PRIZE for getting as close as possible to those limits, and a HUGE PENALTY for exceeding. Do your best. Be sincere/funny/creative/unexpected/thoughtful. Heck, go off piste, and be gross if you want. Your identity is secure, due to computer technology. You are Santa to %s, and you are an Elf to %s. Go, and be merry. See you Saturday!  PS. If the parenthetical name at the beginning of the email is NOT YOU, let me know ASAP - I goofed. Also, if you are Santa or Elf to your spouse or yourself, please let me know that too. I'm no pro, you know?  PPS. I don't know how to do a carriage return in this thing."
 
-# for i in addys:
-# 	send_email('jones.christopherd@gmail.com', '###########', peeps_addy_dict[i], 'Gift Exchange!', 'hello and more %s' % other_dict[i])
-
+for i in peeps:
+	send_email('jones.christopherd@gmail.com', '', peeps_addy_dict[i], 'Gift Exchange!', msg % (i, santa[i], elf[i]))
