@@ -1,2 +1,2 @@
 # mcmercly
-family holiday gift exchange MATLAB
+family holiday gift exchange
